@@ -1,9 +1,8 @@
-# Recent News (New Update v.1.2)
-Port Forwarding<br>        NetStat <br>
-Grab wpa_supplicant <br>   Turn WiFi On/Off <br>                
-Show Mac/Inet<br>          Remove Password<br>
-Extract apk from app<br>   Use Keycode <br>           
-Get Battery Status<br>     Get Current Activity<br>   
+# Recent News (New Update v.1.3-fork)
+Ping<br>        Remount /system in rw <br>
+Reboot in recovery mode <br>   Delete /sdcard and /emulated in Storage <br>   
+Access to shell now directly access with root privileges
+  
 
 # PhoneSploit 
 Using open Adb ports we can exploit a device
