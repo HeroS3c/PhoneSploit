@@ -1,7 +1,8 @@
 # Recent News (New Update v.1.3-fork)
 Ping<br>        Remount /system in rw <br>
 Reboot in recovery mode <br>   Delete /sdcard and /emulated in Storage <br>   
-Access to shell now directly access with root privileges
+Access to shell now directly access with root privileges.
+Fixed "[11] Uninstall an app"
   
 
 # PhoneSploit 
